@@ -1,5 +1,7 @@
 # Amnezia Backup Tool
 
+[English](README.md) | [Русский](README_RU.md)
+
 Backs up and restores your Amnezia VPN containers.
 
 ## What it does
@@ -11,13 +13,13 @@ Backs up and restores your Amnezia VPN containers.
 
 ### Make a backup
 ```bash
-./amnezia-backup.sh [backup_dir]
+bash ./amnezia-backup.sh [backup_dir]
 ```
 If `backup_dir` is not provided, the current working directory is used.
 
 ### Restore from backup  
 ```bash
-./amnezia-backup.sh -r [backup_dir]
+bash ./amnezia-backup.sh -r [backup_dir]
 ```
 
 ## Configuration
@@ -31,7 +33,7 @@ You can override the default settings using environment variables:
 
 Example:
 ```bash
-CONSISTENT_BACKUP=true ./amnezia-backup.sh /path/to/backups
+CONSISTENT_BACKUP=true bash ./amnezia-backup.sh /path/to/backups
 ```
 
 ## What you need

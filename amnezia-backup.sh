@@ -15,6 +15,8 @@ CONSISTENT_BACKUP="${CONSISTENT_BACKUP:-false}"
 
 show_help() {
     cat << EOF
+    EN help:
+    Learn more: https://github.com/nastyagrifon/amnezia-backup
 Usage: $(basename "$0") [OPTIONS] [BACKUP_DIR]
 
 Backs up or restores /opt/ directories of Amnezia VPN containers.
@@ -35,6 +37,32 @@ Environment Variables:
   CONSISTENT_BACKUP          Set to "true" to pause container during backup
 
 Examples:
+  $(basename "$0") /mnt/backups
+  $(basename "$0") -r /mnt/backups
+  CONSISTENT_BACKUP=true $(basename "$0") -v
+
+    RU помощь:
+    Подробнее: https://github.com/nastyagrifon/amnezia-backup
+Использование: $(basename "$0") [ПАРАМЕТРЫ] [каталог_резервных_копий]
+
+Создаёт резервные копии или восстанавливает каталоги /opt/ контейнеров Amnezia VPN.
+
+Параметры:
+  -r           Режим восстановления (по умолчанию — режим создания бэкапа)
+  -n           Пробный запуск: показать, что будет выполнено, без внесения изменений
+  -v           Подробный режим: выводить более детальную информацию
+  -h, --help   Показать это справочное сообщение
+
+Аргументы:
+  BACKUP_DIR   Каталог для хранения/чтения резервных копий (по умолчанию — текущий каталог)
+
+Переменные окружения:
+  CONTAINER_PREFIX           Префикс целевых контейнеров (по умолчанию: amnezia)
+  RETENTION_COUNT            Количество обычных бэкапов для хранения (по умолчанию: 5)
+  ROLLBACK_RETENTION_COUNT   Количество страховочных бэкапов (по умолчанию: 2)
+  CONSISTENT_BACKUP          Установите "true", чтобы приостановить контейнер во время бэкапа
+
+Примеры:
   $(basename "$0") /mnt/backups
   $(basename "$0") -r /mnt/backups
   CONSISTENT_BACKUP=true $(basename "$0") -v
@@ -378,5 +406,6 @@ if [[ $FAILURES -gt 0 ]]; then
     exit 1
 fi
 
-echo "COMPLETED SUCCESSFULLY."
+echo "COMPLETED SUCCESSFULLY.
+ЗАВЕРШЕНО УСПЕШНО."
 exit 0
